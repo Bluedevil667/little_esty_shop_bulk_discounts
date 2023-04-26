@@ -112,4 +112,13 @@ RSpec.describe 'invoices show' do
     expect(page).to have_content(@invoice_1.total_discounted_amount)
   end
 
+  it "shows a link to the discount show page if the invoice has discounts" do
+    visit merchant_invoice_path(@merchant1, @invoice_1)
+   
+    expect(page).to have_link(@discount1.promo_name)
+    
+    click_link(@discount1.promo_name)
+
+    expect(current_path).to eq(merchant_bulk_discount_path(@merchant1, @discount1))
+  end
 end
