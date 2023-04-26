@@ -19,19 +19,19 @@ RSpec.describe 'Bulk Discounts New Page' do
       fill_in 'Percentage Discount', with: 0.15
       fill_in 'Quantity Threshold', with: 15
       fill_in 'Name', with: 'Buy 15, Get 15% Off'
-      click_button 'Create New Discount'
+      click_button 'Submit'
 
       expect(current_path).to eq(merchant_bulk_discounts_path(@merchant1))
       
       expect(page).to have_link('Buy 15, Get 15% Off')
     end
 
-    it 'redirects back to index if discount percentage and quantity are valid' do
+    it 'redirects back to new page if discount percentage and quantity are valid' do
       fill_in 'Percentage Discount', with: 0.15
       fill_in 'Quantity Threshold', with: 15
 
-      click_button 'Create New Discount'
-
+      click_button 'Submit'
+      
       expect(current_path).to eq(new_merchant_bulk_discount_path(@merchant1))
       expect(current_path).to_not eq(merchant_bulk_discounts_path(@merchant1))
     end
@@ -40,7 +40,7 @@ RSpec.describe 'Bulk Discounts New Page' do
       fill_in 'Percentage Discount', with: -0.15
       fill_in 'Quantity Threshold', with: 15
       fill_in 'Name', with: 'Buy 15, Get 15% Off'
-      click_button 'Create New Discount'
+      click_button 'Submit'
 
       expect(current_path).to eq(new_merchant_bulk_discount_path(@merchant1))
     end
