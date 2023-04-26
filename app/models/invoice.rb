@@ -21,7 +21,7 @@ class Invoice < ApplicationRecord
                                            .order(percentage_discount: :desc)
                                            .first
       bulk_discount ? (invoice_item.quantity * invoice_item.unit_price * bulk_discount.percentage_discount) : 0
-    end
+    end.round(2)
   end
   
 
