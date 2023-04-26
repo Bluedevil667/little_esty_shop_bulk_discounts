@@ -10,6 +10,14 @@
   </nav>
 </div>
 <body>
+<section id="3_upcoming-holidays">
+    <h3>Upcoming Holidays</h3>
+    <ul>
+      <% @holidays.each do |holiday| %>
+        <li><%= holiday.name %> - <%= holiday.format_date %></li>
+      <% end %>
+    </ul>
+  </section>
   <section id="create-discount">
     <p><%= link_to 'New Discount', new_merchant_bulk_discount_path(@merchant) %></p>
   </section>
