@@ -13,5 +13,6 @@
   <div id="discount-info">
     <p>Discount: <%= @bulk_discount.percentage_discount * 100 %>%</p>
     <p>Quantity Threshold: <%= @bulk_discount.quantity_threshold %></p>
+    <p><%= button_to "Edit Discount", edit_merchant_bulk_discount_path(@merchant, @bulk_discount), method: :get, local: true %></p>
   </div>
 </body>
